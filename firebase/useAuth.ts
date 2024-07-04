@@ -8,7 +8,11 @@ import {
 	User,
 	Unsubscribe,
 	signInWithEmailAndPassword,
+	FacebookAuthProvider,
+	OAuthProvider,
+	signInWithRedirect,
 } from 'firebase/auth';
+import { appleAuth } from '@invertase/react-native-apple-authentication';
 import { auth } from './config';
 import { router } from 'expo-router';
 
@@ -32,39 +36,31 @@ const useAuth = () => {
 		return () => unsubscribe();
 	}, []);
 
-	const getCurrentUser = (): Promise<User | null> => {
-		return new Promise((resolve, reject) => {
-			const unsubscribe = onAuthStateChanged(
-				auth,
-				(currentUser) => {
-					unsubscribe();
-					resolve(currentUser);
-				},
-				reject
-			);
-		});
+	const loginWithGoogle = async (): Promise<void> => {
+		const provider = new GoogleAuthProvider();
+		await signIn(provider);
 	};
 
-	const loginWithGoogle = async (): Promise<void> => {
-		if (user) return;
+	const loginWithFacebook = async (): Promise<void> => {
+		const provider = new FacebookAuthProvider();
+		await signIn(provider);
+	};
 
-		const provider = new GoogleAuthProvider();
+	const loginWithApple = async (): Promise<void> => {
+		  try {
+      const appleAuthRequestResponse = await appleAuth.performRequest({
+        requestedOperation: appleAuth.Operation.LOGIN,
+        requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
+      });
 
-		setIsLoading(true);
-		setHasFailed(false);
-		setError(null);
-
-		try {
-			const result = await signInWithPopup(auth, provider);
-			setUser(result.user);
-
-			router.replace(afterLoginPage);
-		} catch (err) {
-			setHasFailed(true);
-			setError(err);
-		} finally {
-			setIsLoading(false);
-		}
+      const { identityToken, user } = appleAuthRequestResponse;
+      const appleCredential = auth.AppleAuthProvider.credential(identityToken);
+      await auth().signInWithCredential(appleCredential);
+      console.log('Apple sign-in successful.');
+      // Navigate to the next screen or handle success
+    } catch (error) {
+      console.error('Error in Apple sign-in:', error);
+    }
 	};
 
 	const loginWithEmail = async (email: string, password: string): Promise<void> => {
@@ -92,6 +88,39 @@ const useAuth = () => {
 		return user !== null;
 	};
 
+	const getCurrentUser = (): Promise<User | null> => {
+		return new Promise((resolve, reject) => {
+			const unsubscribe = onAuthStateChanged(
+				auth,
+				(currentUser) => {
+					unsubscribe();
+					resolve(currentUser);
+				},
+				reject
+			);
+		});
+	};
+
+	const signIn = async (provider: GoogleAuthProvider | FacebookAuthProvider | OAuthProvider) => {
+		if (user) return;
+		console.log('a');
+
+		setIsLoading(true);
+		setHasFailed(false);
+		setError(null);
+
+		try {
+			const result = await signInWithRedirect(auth, provider);
+			setUser(result.);
+			router.replace(afterLoginPage);
+		} catch (err) {
+			setHasFailed(true);
+			setError(err);
+		} finally {
+			setIsLoading(false);
+		}
+	};
+
 	return {
 		isLoading,
 		hasFailed,
@@ -99,6 +128,8 @@ const useAuth = () => {
 		error,
 		loginWithGoogle,
 		loginWithEmail,
+		loginWithApple,
+		loginWithFacebook,
 		logout,
 		getCurrentUser,
 		isLogged,

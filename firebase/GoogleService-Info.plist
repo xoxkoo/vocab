@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>763704671353-6mau6gar3bal4cpg4f8m2ndhjtv7kfs9.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.763704671353-6mau6gar3bal4cpg4f8m2ndhjtv7kfs9</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAYflsmhCzlX48wYXb5TBI9SzsDpJeGqo0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>763704671353</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.vocab</string>
+	<key>PROJECT_ID</key>
+	<string>vocab-67785</string>
+	<key>STORAGE_BUCKET</key>
+	<string>vocab-67785.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:763704671353:ios:a07682ea2366863ca768a8</string>
+</dict>
+</plist>

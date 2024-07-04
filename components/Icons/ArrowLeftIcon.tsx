@@ -1,10 +1,8 @@
-import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
-import Svg, { G, Path, Circle } from 'react-native-svg';
+import Svg, { Path } from 'react-native-svg';
 
 export function ArrowLeftIcon({ height = 40, width = 40 }) {
 	const colorScheme = useColorScheme();
-	console.log(colorScheme);
 	return (
 		<Svg width={width} height={height} viewBox='0 0 1024 1024'>
 			<Path
