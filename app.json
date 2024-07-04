@@ -13,11 +13,9 @@
 			"backgroundColor": "#ffffff"
 		},
 		"ios": {
-			"googleServicesFile": "./firebase/GoogleService-Info.plist",
 			"supportsTablet": true
 		},
 		"android": {
-			"googleServicesFile": "./firebase/google-services.json",
 			"adaptiveIcon": {
 				"foregroundImage": "./assets/images/adaptive-icon.png",
 				"backgroundColor": "#ffffff"
@@ -28,7 +26,7 @@
 			"output": "static",
 			"favicon": "./assets/images/favicon.png"
 		},
-		"plugins": ["@react-native-google-signin/google-signin", "expo-router"],
+		"plugins": ["expo-router"],
 
 		"experiments": {
 			"typedRoutes": true

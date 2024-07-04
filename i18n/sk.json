@@ -1,13 +1,13 @@
 {
 	"hello": "Vitaj späť",
 	"login": {
-		"title": "Prihlasit sa",
+		"title": "Prihlásiť sa",
 		"password": "Heslo",
 		"emailPlaceholder": "Zadajte email",
 		"passwordPlaceholder": "Zadajte heslo",
-		"button": "Prihlasit",
-		"divider": "Alebo prihlasit s",
-		"dontHaveAccount": "Nemate ucet? ",
-		"signUp": "Registrovat"
+		"button": "Prihlásiť",
+		"divider": "Alebo prihlasiť s",
+		"dontHaveAccount": "Nemáte účet? ",
+		"signUp": "Registrovať"
 	}
 }

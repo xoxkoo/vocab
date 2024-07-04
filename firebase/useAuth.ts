@@ -12,7 +12,6 @@ import {
 	OAuthProvider,
 	signInWithRedirect,
 } from 'firebase/auth';
-import { appleAuth } from '@invertase/react-native-apple-authentication';
 import { auth } from './config';
 import { router } from 'expo-router';
 
@@ -47,20 +46,19 @@ const useAuth = () => {
 	};
 
 	const loginWithApple = async (): Promise<void> => {
-		  try {
-      const appleAuthRequestResponse = await appleAuth.performRequest({
-        requestedOperation: appleAuth.Operation.LOGIN,
-        requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
-      });
-
-      const { identityToken, user } = appleAuthRequestResponse;
-      const appleCredential = auth.AppleAuthProvider.credential(identityToken);
-      await auth().signInWithCredential(appleCredential);
-      console.log('Apple sign-in successful.');
-      // Navigate to the next screen or handle success
-    } catch (error) {
-      console.error('Error in Apple sign-in:', error);
-    }
+		// 	  try {
+		//    const appleAuthRequestResponse = await appleAuth.performRequest({
+		//      requestedOperation: appleAuth.Operation.LOGIN,
+		//      requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
+		//    });
+		//    const { identityToken, user } = appleAuthRequestResponse;
+		//    const appleCredential = auth.AppleAuthProvider.credential(identityToken);
+		//    await auth().signInWithCredential(appleCredential);
+		//    console.log('Apple sign-in successful.');
+		//    // Navigate to the next screen or handle success
+		//  } catch (error) {
+		//    console.error('Error in Apple sign-in:', error);
+		//  }
 	};
 
 	const loginWithEmail = async (email: string, password: string): Promise<void> => {
@@ -111,7 +109,6 @@ const useAuth = () => {
 
 		try {
 			const result = await signInWithRedirect(auth, provider);
-			setUser(result.);
 			router.replace(afterLoginPage);
 		} catch (err) {
 			setHasFailed(true);
