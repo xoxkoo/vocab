@@ -12,6 +12,7 @@ import {
 	OAuthProvider,
 	signInWithRedirect,
 } from 'firebase/auth';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { auth } from './config';
 import { router } from 'expo-router';
 
@@ -36,8 +37,9 @@ const useAuth = () => {
 	}, []);
 
 	const loginWithGoogle = async (): Promise<void> => {
-		const provider = new GoogleAuthProvider();
-		await signIn(provider);
+		// GoogleSignin.configure();
+		// const provider = new GoogleAuthProvider();
+		// await signIn(provider);
 	};
 
 	const loginWithFacebook = async (): Promise<void> => {
