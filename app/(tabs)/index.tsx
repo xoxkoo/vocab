@@ -48,7 +48,7 @@ export default function HomeScreen() {
 							</Modal>
 						</View>
 						{/* <Button title='login' onPress={router.replace('/login')}></Button> */}
-						{/* <Pressable onPress={router.replace('/login')} /> */}
+						<Pressable onPress={() => router.replace('/login')} />
 					</View>
 				) : (
 					<Text>Not logged</Text>

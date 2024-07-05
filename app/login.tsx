@@ -17,7 +17,6 @@ import { useNavigation } from '@react-navigation/native';
 import { EyeIcon } from '@/components/Icons/EyeIcon';
 import { NavigationContext } from '@react-navigation/native';
 import { EyeOffIcon } from '@/components/Icons/EyeOffIcon';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 export default function LoginScreen() {
 	const colorScheme = useColorScheme();
@@ -43,16 +42,6 @@ export default function LoginScreen() {
 			},
 		});
 	}, [navigation]);
-
-	useEffect(() => {
-		// Initialize GoogleSignin
-		GoogleSignin.configure({
-			webClientId: '<YOUR_WEB_CLIENT_ID>', // Replace with your web client ID
-			offlineAccess: true, // if you want to access Google API on behalf of the user from your server
-			hostedDomain: '', // specifies a hosted domain restriction
-			forceCodeForRefreshToken: true, // [Android] related to `serverAuthCode`, read the docs link below *.
-		});
-	}, []);
 
 	const handleEmailLogin = async () => {
 		loginWithEmail(email, password);
