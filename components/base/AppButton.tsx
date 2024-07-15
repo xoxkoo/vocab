@@ -10,7 +10,7 @@ interface AppButtonProps extends PressableProps {
 	textStyle?: StyleProp<TextStyle>;
 	outlined?: boolean;
 	severity?: 'primary' | 'secondary';
-	className?: string;
+	buttonClassName?: string;
 }
 
 const AppButton: React.FC<AppButtonProps> = ({
@@ -20,7 +20,7 @@ const AppButton: React.FC<AppButtonProps> = ({
 	outlined,
 	severity,
 	icon,
-	className,
+	buttonClassName,
 	...rest
 }) => {
 	const getButtonStyle = (): StyleProp<ViewStyle> => {
@@ -50,7 +50,7 @@ const AppButton: React.FC<AppButtonProps> = ({
 	};
 
 	return (
-		<Pressable style={getButtonStyle()} {...rest} className={className}>
+		<Pressable style={getButtonStyle()} {...rest} className={buttonClassName}>
 			<View style={styles.content}>
 				{icon && <View style={styles.icon}>{icon}</View>}
 				{title && <ThemedText style={getTextStyle()}>{title}</ThemedText>}
@@ -75,6 +75,8 @@ const styles = StyleSheet.create({
 		backgroundColor: colorSecondary,
 	},
 	outlinedButton: {
+		paddingHorizontal: 17,
+		paddingVertical: 9,
 		backgroundColor: 'transparent',
 		borderWidth: 1.5,
 		borderRadius: 5,

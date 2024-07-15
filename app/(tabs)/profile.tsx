@@ -6,6 +6,8 @@ import { ExternalLink } from '@/components/base/ExternalLink';
 import ParallaxScrollView from '@/components/layout/ParallaxScrollView';
 import { ThemedText } from '@/components/theme/ThemedText';
 import { ThemedView } from '@/components/theme/ThemedView';
+import { useEffect, useLayoutEffect } from 'react';
+import { useNavigation } from 'expo-router';
 
 export default function TabTwoScreen() {
 	return (

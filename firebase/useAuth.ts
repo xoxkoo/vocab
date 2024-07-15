@@ -37,8 +37,6 @@ const useAuth = () => {
 	}, []);
 
 	const loginWithGoogle = async (): Promise<void> => {
-		console.log('a');
-
 		GoogleSignin.configure();
 		try {
 			await GoogleSignin.hasPlayServices();
@@ -125,7 +123,6 @@ const useAuth = () => {
 
 	const signIn = async (provider: GoogleAuthProvider | FacebookAuthProvider | OAuthProvider) => {
 		if (user) return;
-		console.log('a');
 
 		setIsLoading(true);
 		setHasFailed(false);

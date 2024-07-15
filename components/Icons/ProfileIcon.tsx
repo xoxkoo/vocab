@@ -4,7 +4,6 @@ import Svg, { G, Path, Circle } from 'react-native-svg';
 
 export function ProfileIcon({ height = 40, width = 40 }) {
 	const colorScheme = useColorScheme();
-	console.log(colorScheme);
 	return (
 		<Svg width={width} height={height} viewBox='0 0 24 24'>
 			<G fill='none' stroke={Colors[colorScheme ?? 'light'].text} strokeWidth='1.5'>

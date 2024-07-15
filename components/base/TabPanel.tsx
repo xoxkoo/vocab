@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, Text, Pressable, StyleSheet, Dimensions } from 'react-native';
 import PagerView from 'react-native-pager-view';
-import { ThemedView } from './theme/ThemedView';
+import { ThemedView } from '../theme/ThemedView';
 
 const { width } = Dimensions.get('window');
 
