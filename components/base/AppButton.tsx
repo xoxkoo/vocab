@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pressable, StyleSheet, PressableProps, StyleProp, ViewStyle, TextStyle, View } from 'react-native';
 import { ThemedText } from '../theme/ThemedText';
-import { colorPrimary, colorSecondary } from '@/constants/Colors';
+import { colorPrimary, colorSecondary, colorDanger } from '@/constants/Colors';
 
 interface AppButtonProps extends PressableProps {
 	title?: string;
@@ -9,7 +9,7 @@ interface AppButtonProps extends PressableProps {
 	buttonStyle?: StyleProp<ViewStyle>;
 	textStyle?: StyleProp<TextStyle>;
 	outlined?: boolean;
-	severity?: 'primary' | 'secondary';
+	severity?: 'primary' | 'secondary' | 'danger';
 	buttonClassName?: string;
 }
 
@@ -28,10 +28,14 @@ const AppButton: React.FC<AppButtonProps> = ({
 		const severityStyle = outlined
 			? severity === 'secondary'
 				? styles.secondaryOutlinedButton
-				: styles.primaryOutlinedButton
+				: severity === 'danger'
+					? styles.dangerOutlinedButton
+					: styles.primaryOutlinedButton
 			: severity === 'secondary'
 				? styles.secondaryButton
-				: styles.primaryButton;
+				: severity === 'danger'
+					? styles.dangerButton
+					: styles.primaryButton;
 
 		return [baseStyle, severityStyle, buttonStyle];
 	};
@@ -41,10 +45,14 @@ const AppButton: React.FC<AppButtonProps> = ({
 		const severityTextStyle = outlined
 			? severity === 'secondary'
 				? styles.secondaryOutlinedText
-				: styles.primaryOutlinedText
+				: severity === 'danger'
+					? styles.dangerOutlinedText
+					: styles.primaryOutlinedText
 			: severity === 'secondary'
 				? styles.secondaryText
-				: styles.primaryText;
+				: severity === 'danger'
+					? styles.dangerText
+					: styles.primaryText;
 
 		return [baseTextStyle, severityTextStyle, textStyle];
 	};
@@ -71,6 +79,9 @@ const styles = StyleSheet.create({
 	primaryButton: {
 		backgroundColor: colorPrimary,
 	},
+	dangerButton: {
+		backgroundColor: colorDanger,
+	},
 	secondaryButton: {
 		backgroundColor: colorSecondary,
 	},
@@ -87,6 +98,9 @@ const styles = StyleSheet.create({
 	secondaryOutlinedButton: {
 		borderColor: colorSecondary,
 	},
+	dangerOutlinedButton: {
+		borderColor: colorDanger,
+	},
 	text: {
 		fontSize: 16,
 		fontFamily: 'DMSans-Medium',
@@ -97,6 +111,9 @@ const styles = StyleSheet.create({
 	secondaryText: {
 		color: '#000000',
 	},
+	dangerText: {
+		color: '#FFFFFF',
+	},
 	outlinedText: {
 		fontSize: 16,
 		fontFamily: 'DMSans-Medium',
@@ -106,6 +123,9 @@ const styles = StyleSheet.create({
 	},
 	secondaryOutlinedText: {
 		color: colorSecondary,
+	},
+	dangerOutlinedText: {
+		color: colorDanger,
 	},
 	content: {
 		flexDirection: 'row',

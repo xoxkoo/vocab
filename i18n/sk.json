@@ -1,5 +1,8 @@
 {
 	"hello": "Vitaj späť",
+	"home": {
+		"wordsTitle": "Slovicka pre dnes"
+	},
 	"login": {
 		"title": "Prihlásiť sa",
 		"password": "Heslo",
@@ -9,5 +12,17 @@
 		"divider": "Alebo prihlasiť s",
 		"dontHaveAccount": "Nemáte účet? ",
 		"signUp": "Registrovať"
+	},
+	"profile": {
+		"title": "Profil",
+		"guest": "Hosť",
+		"logout": "Odhlásiť sa",
+		"settings": "Nastavenia",
+		"changePassword": "Zmeniť heslo",
+		"changeEmail": "Zmeniť email",
+		"deleteAccount": "Zmazať účet",
+		"accountInformationTitle": "Informácie o účte",
+		"dangerZoneTitle": "Nebezpečná zóna",
+		"appDescription": "Jednoduchá aplikácia pre správu hesiel"
 	}
 }

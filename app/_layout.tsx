@@ -24,9 +24,6 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
 	const { isLogged, isLoading, logout } = useAuth();
-	const { t } = useTranslation();
-
-	const [modalVisible, setModalVisible] = useState(false);
 
 	const colorScheme = useColorScheme();
 	const [loaded] = useFonts({
@@ -34,25 +31,6 @@ export default function RootLayout() {
 		'DMSans-Bold': require('../assets/fonts/DMSans-Bold.ttf'),
 		'DMSans-Medium': require('../assets/fonts/DMSans-Medium.ttf'),
 	});
-
-	const headerOptionsAndHeaderLeft = {
-		headerTitle: '',
-		headerShown: true,
-		headerShadowVisible: false,
-		headerStyle: {
-			backgroundColor: Colors[colorScheme ?? 'light'].background,
-		},
-		headerLeft: () =>
-			router.canGoBack() ? (
-				<Pressable
-					onPress={() => {
-						if (router.canGoBack()) router.back();
-					}}
-				>
-					<ArrowLeftIcon />
-				</Pressable>
-			) : null,
-	};
 
 	useEffect(() => {
 		if (loaded) {
@@ -70,56 +48,13 @@ export default function RootLayout() {
 				<Stack.Screen
 					name='(tabs)'
 					options={{
-						...headerOptionsAndHeaderLeft,
-						// headerRight: () => (
-						// 	<>
-						// 		<Pressable onPress={() => setModalVisible(true)}>
-						// 			<ProfileIcon />
-						// 		</Pressable>
-						// 		<Modal
-						// 			animationIn='slideInRight'
-						// 			animationOut='slideOutRight'
-						// 			hasBackdrop={false}
-						// 			isVisible={modalVisible}
-						// 		>
-						// 			<Pressable className='flex-1' onPress={() => setModalVisible(false)}>
-						// 				<ThemedView className='absolute right-0 mt-2 flex-1 p-3 pt-1' style={styles.modalView}>
-						// 					<ThemedView>
-						// 						<View className='flex-row items-center'>
-						// 							<Text>Profil</Text>
-						// 							<Pressable className='ml-auto' onPress={() => setModalVisible(!modalVisible)}>
-						// 								<CrossIcon />
-						// 							</Pressable>
-						// 						</View>
-						// 						{isLogged() ? (
-						// 							<AppButton
-						// 								title={t('logout')}
-						// 								severity='secondary'
-						// 								outlined
-						// 								buttonClassName='mt-5'
-						// 								onPress={logout}
-						// 							/>
-						// 						) : (
-						// 							<AppButton
-						// 								title={t('login.login')}
-						// 								severity='secondary'
-						// 								outlined
-						// 								buttonClassName='mt-5'
-						// 								onPress={() => router.push('/login')}
-						// 							/>
-						// 						)}
-						// 					</ThemedView>
-						// 				</ThemedView>
-						// 			</Pressable>
-						// 		</Modal>
-						// 	</>
-						// ),
+						headerShown: false,
 					}}
 				/>
 				<Stack.Screen
 					name='login'
 					options={{
-						...headerOptionsAndHeaderLeft,
+						headerShown: false,
 					}}
 				/>
 				<Stack.Screen name='+not-found' />

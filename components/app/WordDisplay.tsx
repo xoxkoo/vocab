@@ -8,7 +8,7 @@ interface WordDisplayProps {
 
 const WordDisplay: React.FC<WordDisplayProps> = ({ word }) => {
 	return (
-		<View className='mt-10 flex items-center'>
+		<View className='my-auto flex items-center'>
 			<ThemedText>{word}</ThemedText>
 		</View>
 	);

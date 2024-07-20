@@ -1,4 +1,4 @@
-import { Tabs } from 'expo-router';
+import { router, Tabs } from 'expo-router';
 import React from 'react';
 
 import { Colors } from '@/constants/Colors';
@@ -6,6 +6,9 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 import { ProfileIcon } from '@/components/Icons/ProfileIcon';
 import { HomeOutlinedIcon } from '@/components/Icons/HomeOutlinedIcon';
 import { HomeFilledIcon } from '@/components/Icons/HomeFilledIcon';
+import { ProfileFilledIcon } from '@/components/Icons/ProfileFilledIcon';
+import { ArrowLeftIcon } from '@/components/Icons/ArrowLeftIcon';
+import { Pressable } from 'react-native';
 
 export default function TabLayout() {
 	const colorScheme = useColorScheme();
@@ -13,14 +16,30 @@ export default function TabLayout() {
 	return (
 		<Tabs
 			screenOptions={{
-				headerShown: false,
+				tabBarShowLabel: false,
 				tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+				headerTitle: '',
+				headerShown: true,
+				headerShadowVisible: false,
+				headerStyle: {
+					backgroundColor: Colors[colorScheme ?? 'light'].background,
+				},
+				headerLeft: () =>
+					router.canGoBack() ? (
+						<Pressable
+							className='pl-3'
+							onPress={() => {
+								if (router.canGoBack()) router.back();
+							}}
+						>
+							<ArrowLeftIcon />
+						</Pressable>
+					) : null,
 			}}
 		>
 			<Tabs.Screen
 				name='index'
 				options={{
-					tabBarShowLabel: false,
 					tabBarIcon: ({ color, focused }: { color: string; focused: boolean }) =>
 						focused ? <HomeFilledIcon /> : <HomeOutlinedIcon />,
 				}}
@@ -28,8 +47,8 @@ export default function TabLayout() {
 			<Tabs.Screen
 				name='profile'
 				options={{
-					tabBarShowLabel: false,
-					tabBarIcon: ({ color, focused }) => <ProfileIcon />,
+					tabBarIcon: ({ color, focused }: { color: string; focused: boolean }) =>
+						focused ? <ProfileFilledIcon /> : <ProfileIcon />,
 				}}
 			/>
 		</Tabs>

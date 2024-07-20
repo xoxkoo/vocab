@@ -34,8 +34,8 @@ export default function LoginScreen() {
 	};
 
 	return (
-		<SafeAreaView className='flex-1'>
-			<ThemedView className='flex-1 justify-center p-5'>
+		<SafeAreaView>
+			<ThemedView className='flex h-full justify-center p-5'>
 				<ThemedText type='title'>{t('login.title')}</ThemedText>
 				<ThemedText type='subtitle' lightColor={colorSecondary} darkColor={colorSecondary} className='mb-7 mt-2'>
 					{t('login.subtitle')}
@@ -69,6 +69,11 @@ export default function LoginScreen() {
 					<AppButton severity='secondary' outlined onPress={loginWithApple} icon={<AppleIcon />}></AppButton>
 					<AppButton severity='secondary' outlined onPress={loginWithFacebook} icon={<FacebookIcon />}></AppButton>
 				</View>
+				<Divider className='my-5' title={''}></Divider>
+				<Pressable onPress={() => router.push('/')}>
+					<ThemedText>{t('login.continue')}</ThemedText>
+				</Pressable>
+
 				<ThemedText className='mx-auto mt-auto'>
 					{t('login.dontHaveAccount')}
 					<Link href='/register' className='ml-5'>
@@ -87,7 +92,7 @@ const styles = StyleSheet.create({
 		fontSize: 18,
 		borderWidth: 1.5,
 		borderRadius: borderRadius,
-		borderColor: Colors.dark.icon,
+		borderColor: colorSecondary,
 		marginBottom: 15,
 		marginTop: 5,
 		fontFamily: 'DMSans-Regular',
