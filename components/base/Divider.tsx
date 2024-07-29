@@ -1,6 +1,7 @@
 import { colorSecondary } from '@/constants/Colors';
 import React from 'react';
 import { View, Text, StyleSheet, StyleProp, ViewStyle, TextStyle } from 'react-native';
+import { ThemedText } from '../theme/ThemedText';
 
 interface DividerProps {
 	title?: string;
@@ -13,7 +14,7 @@ const Divider: React.FC<DividerProps> = ({ title, style, textStyle, className })
 	return (
 		<View style={[styles.container, style]} className={className}>
 			<View style={styles.line} />
-			{title && <Text style={[styles.title, textStyle]}>{title}</Text>}
+			{title && <ThemedText style={[styles.title, textStyle]}>{title}</ThemedText>}
 			{title && <View style={styles.line} />}
 		</View>
 	);
@@ -26,13 +27,12 @@ const styles = StyleSheet.create({
 	},
 	line: {
 		flex: 1,
-		height: 1.5,
-		backgroundColor: colorSecondary, // Default color for the line
+		height: 1,
+		backgroundColor: colorSecondary,
 	},
 	title: {
 		marginHorizontal: 8,
 		fontSize: 14,
-		color: '#000', // Default color for the title text
 	},
 });
 

@@ -17,7 +17,9 @@ export default function TabLayout() {
 		<Tabs
 			screenOptions={{
 				tabBarShowLabel: false,
-				tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+				tabBarStyle: {
+					backgroundColor: Colors[colorScheme ?? 'light'].shade,
+				},
 				headerTitle: '',
 				headerShown: true,
 				headerShadowVisible: false,
@@ -38,7 +40,7 @@ export default function TabLayout() {
 			}}
 		>
 			<Tabs.Screen
-				name='index'
+				name='home'
 				options={{
 					tabBarIcon: ({ color, focused }: { color: string; focused: boolean }) =>
 						focused ? <HomeFilledIcon /> : <HomeOutlinedIcon />,

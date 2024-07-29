@@ -1,23 +1,49 @@
 {
-	"hello": "Vitaj späť",
+	"welcome": {
+		"title": "vocab.",
+		"subtitle": "Rozšír svoju slovnú zásobu",
+		"description": "Nauč sa nové slovo každý deň a rozširuj svoju slovnú zásobu – táto aplikácia je praktický nástroj na zlepšenie jazykových schopností a obohatenie tvojej komunikácie.",
+		"button": "Zlepši si slovník"
+	},
 	"home": {
-		"wordsTitle": "Slovicka pre dnes"
+		"hello": "Vitaj späť",
+		"wordsTitle": "Slovíčka na dnes",
+		"empty": "Žiadne slovíčka na dnes 🤫"
+	},
+	"appearance": {
+		"dark": "Tmavá",
+		"light": "Svetlá",
+		"system": "Systém"
+	},
+	"suggestion": {
+		"leaveUsSuggestion1": "Máte návrh na nové slovo? ",
+		"leaveUsSuggestion2": "Napíšte nám.",
+		"placeholder": "Napíšte nám svoj návrh",
+		"title": "Váš návrh",
+		"button": "Odoslať",
+		"success": "Vaša odpoveď bola úspešne odoslaná. Ďakujeme že sa snažíte zlepšiť našu aplikáciu. 💚",
+		"error": "Nastala chyba pri odosielaní odpovede. Skúste to znova neskôr."
 	},
 	"login": {
 		"title": "Prihlásiť sa",
+		"subtitle": "Zadajte svoje prihlasovacie údaje",
+		"continue": "Pokračovať bez prihlásenia",
+		"or": "Alebo",
 		"password": "Heslo",
 		"emailPlaceholder": "Zadajte email",
 		"passwordPlaceholder": "Zadajte heslo",
 		"button": "Prihlásiť",
 		"divider": "Alebo prihlasiť s",
 		"dontHaveAccount": "Nemáte účet? ",
-		"signUp": "Registrovať"
+		"signUp": "Registrovať",
+		"error": "Nesprávne prihlasovacie údaje!"
 	},
 	"profile": {
 		"title": "Profil",
 		"guest": "Hosť",
 		"logout": "Odhlásiť sa",
 		"settings": "Nastavenia",
+		"appearance": "Vzhľad",
 		"changePassword": "Zmeniť heslo",
 		"changeEmail": "Zmeniť email",
 		"deleteAccount": "Zmazať účet",

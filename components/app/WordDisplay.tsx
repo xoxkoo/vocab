@@ -1,15 +1,17 @@
 import React from 'react';
 import { View } from 'react-native';
 import { ThemedText } from '@/components/theme/ThemedText'; // Adjust the import according to your project structure
+import { Word } from '@/service/word';
 
 interface WordDisplayProps {
-	word: string;
+	data: Word;
 }
 
-const WordDisplay: React.FC<WordDisplayProps> = ({ word }) => {
+const WordDisplay: React.FC<WordDisplayProps> = ({ data }) => {
 	return (
-		<View className='my-auto flex items-center'>
-			<ThemedText>{word}</ThemedText>
+		<View className='my-auto items-center'>
+			<ThemedText type='subtitleSemiBold'>{data.word}</ThemedText>
+			<ThemedText className='pt-5'>{data.description}</ThemedText>
 		</View>
 	);
 };

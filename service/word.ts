@@ -20,7 +20,7 @@ export default {
 			const querySnapshot = await getDocs(q);
 			const words = querySnapshot.docs.map((doc) => {
 				const data = doc.data();
-				return { word: data.word };
+				return { word: data.word, description: data.description };
 			});
 
 			return words as Word[];

@@ -2,6 +2,7 @@ import React from 'react';
 import { Pressable, StyleSheet, PressableProps, StyleProp, ViewStyle, TextStyle, View } from 'react-native';
 import { ThemedText } from '../theme/ThemedText';
 import { colorPrimary, colorSecondary, colorDanger } from '@/constants/Colors';
+import { borderRadius } from '@/assets/styles';
 
 interface AppButtonProps extends PressableProps {
 	title?: string;
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
 	button: {
 		paddingVertical: 12,
 		paddingHorizontal: 20,
-		borderRadius: 5,
+		borderRadius: borderRadius,
 		alignItems: 'center',
 		justifyContent: 'center',
 		flexDirection: 'row',
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
 		paddingVertical: 9,
 		backgroundColor: 'transparent',
 		borderWidth: 1.5,
-		borderRadius: 5,
+		borderRadius: borderRadius,
 	},
 	primaryOutlinedButton: {
 		borderColor: colorPrimary,

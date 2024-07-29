@@ -1,12 +1,17 @@
 import { PropsWithChildren, useState } from 'react';
-import { StyleSheet, Pressable, useColorScheme, View } from 'react-native';
+import { StyleSheet, Pressable, useColorScheme, View, StyleProp } from 'react-native';
 
 import { ThemedText } from '@/components/theme/ThemedText';
 import { ThemedView } from '@/components/theme/ThemedView';
 import { Colors, colorSecondary } from '@/constants/Colors';
 import { ArrowLeftIcon } from '../Icons/ArrowLeftIcon';
 
-export function Collapsible({ children, title, icon }: PropsWithChildren & { title: string; icon?: React.ReactNode }) {
+export function Collapsible({
+	children,
+	title,
+	icon,
+	textStyle,
+}: PropsWithChildren & { title: string; icon?: React.ReactNode; textStyle?: StyleProp<any> }) {
 	const [isOpen, setIsOpen] = useState(false);
 	const theme = useColorScheme() ?? 'light';
 
@@ -15,7 +20,7 @@ export function Collapsible({ children, title, icon }: PropsWithChildren & { tit
 			<Pressable style={styles.heading} onPress={() => setIsOpen((value) => !value)}>
 				<View className='flex flex-row items-center'>
 					{icon && <View style={styles.icon}>{icon}</View>}
-					<ThemedText type='subtitle' className='pl-3'>
+					<ThemedText type='subtitle' className='pl-3' style={textStyle}>
 						{title}
 					</ThemedText>
 				</View>
@@ -39,7 +44,7 @@ const styles = StyleSheet.create({
 		gap: 6,
 	},
 	content: {
-		marginVertical: 10,
+		marginVertical: 15,
 	},
 	chevronRight: {},
 	icon: {},

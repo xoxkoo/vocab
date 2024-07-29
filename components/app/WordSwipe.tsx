@@ -1,6 +1,6 @@
 import Swiper from 'react-native-swiper';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import WordDisplay from './WordDisplay';
 import { Word } from '@/service/word';
 import { ThemedText } from '../theme/ThemedText';
@@ -14,10 +14,10 @@ const WordSwipe: React.FC<WordSwipeProps> = ({ words }) => {
 	const { t } = useTranslation();
 	const renderPagination = (index: number, total: number, context: any) => {
 		return (
-			<View className='mt-0'>
-				<Text>
-					<Text>{index + 1}</Text>/{total}
-				</Text>
+			<View className='ml-auto'>
+				<ThemedText>
+					<ThemedText>{index + 1}</ThemedText>/{total}
+				</ThemedText>
 			</View>
 		);
 	};
@@ -29,16 +29,23 @@ const WordSwipe: React.FC<WordSwipeProps> = ({ words }) => {
 					{t('home.wordsTitle')}
 				</ThemedText>
 				<Swiper
-					showsButtons={true}
-					height={100}
+					// showsButtons={words.length > 1}
+					// nextButton={<ArrowLeftIcon iconClassName='rotate-180' />}
+					// prevButton={<ArrowLeftIcon />}
+					// buttonWrapperStyle={{ top: '50%', position: 'absolute', paddingBottom: 15 }}
 					renderPagination={renderPagination}
-					paginationStyle={{ position: 'absolute', top: 0, left: 0 }}
 				>
-					{words.map((word, index) => (
-						<WordDisplay word={word.word} key={index} />
+					{words.map((data, index) => (
+						<WordDisplay data={data} key={index} />
 					))}
 				</Swiper>
 			</>
+		);
+	} else {
+		return (
+			<ThemedText type='subtitle' className='mb-auto mt-10'>
+				{t('home.empty')}
+			</ThemedText>
 		);
 	}
 };

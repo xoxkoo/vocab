@@ -1,29 +1,27 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { router, Stack } from 'expo-router';
+import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import 'react-native-reanimated';
-import { StyleSheet, Text } from 'react-native';
+import { Appearance, StyleSheet } from 'react-native';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 import useAuth from '@/firebase/useAuth';
-import { Colors, colorSecondary } from '@/constants/Colors';
-import AppButton from '@/components/base/AppButton';
-import { Pressable, View } from 'react-native';
-import { ArrowLeftIcon } from '@/components/Icons/ArrowLeftIcon';
-import { ProfileIcon } from '@/components/Icons/ProfileIcon';
-import Modal from 'react-native-modal';
-import { ThemedView } from '@/components/theme/ThemedView';
-import CrossIcon from '@/components/Icons/CrossIcon';
-import { useTranslation } from 'react-i18next';
+import { colorSecondary } from '@/constants/Colors';
 import { borderRadius } from '@/assets/styles';
+import { ToastProvider } from 'react-native-toast-notifications';
+import { NativeWindStyleSheet } from 'nativewind';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
+NativeWindStyleSheet.setOutput({
+	default: 'native',
+});
+
 export default function RootLayout() {
-	const { isLogged, isLoading, logout } = useAuth();
+	const { isLoading } = useAuth();
 
 	const colorScheme = useColorScheme();
 	const [loaded] = useFonts({
@@ -44,21 +42,42 @@ export default function RootLayout() {
 
 	return (
 		<ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-			<Stack>
-				<Stack.Screen
-					name='(tabs)'
-					options={{
-						headerShown: false,
-					}}
-				/>
-				<Stack.Screen
-					name='login'
-					options={{
-						headerShown: false,
-					}}
-				/>
-				<Stack.Screen name='+not-found' />
-			</Stack>
+			<ToastProvider placement='top'>
+				<Stack>
+					<Stack.Screen
+						name='(tabs)'
+						options={{
+							headerShown: false,
+						}}
+					/>
+					<Stack.Screen
+						name='login'
+						options={{
+							headerShown: false,
+							// headerTitle: '',
+							// headerShadowVisible: false,
+							// headerLeft: () => '',
+							// headerStyle: {
+							// 	backgroundColor: Colors[colorScheme ?? 'light'].background,
+							// },
+						}}
+					/>
+					<Stack.Screen
+						name='index'
+						options={{
+							headerShown: false,
+							// headerTitle: '',
+							// headerShadowVisible: false,
+							// headerLeft: () => '',
+							// headerStyle: {
+							// 	backgroundColor: Colors[colorScheme ?? 'light'].background,
+							// },
+						}}
+					/>
+
+					<Stack.Screen name='+not-found' />
+				</Stack>
+			</ToastProvider>
 		</ThemeProvider>
 	);
 }
