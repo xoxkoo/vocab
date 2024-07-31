@@ -2,14 +2,14 @@ import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import Svg, { Path, G } from 'react-native-svg';
 
-export function AppearanceIcon({ height = 40, width = 40 }) {
+export function AppearanceIcon({ height = 40, width = 40, color = '' }) {
 	const colorScheme = useColorScheme();
+
 	return (
-		//
 		<Svg width={width} height={height} viewBox='0 0 24 24'>
 			<G
 				fill='none'
-				stroke={Colors[colorScheme ?? 'light'].text}
+				stroke={color !== '' ? color : Colors[colorScheme ?? 'light'].text}
 				stroke-linecap='round'
 				stroke-linejoin='round'
 				stroke-width='2'

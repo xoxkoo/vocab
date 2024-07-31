@@ -8,25 +8,30 @@ import { AppearanceIcon } from '../Icons/AppearanceIcon';
 import CheckmarkIcon from '../Icons/CheckmarkIcon';
 import DarkThemeIcon from '../Icons/DarkThemeIcon';
 import LightThemeIcon from '../Icons/LightThemeIcon';
-import { useEffect } from 'react';
 
 export function AppearanceSwitch() {
 	const colorScheme = useColorScheme();
 
 	const schemeOptions = ['light', 'dark', 'system'];
-	useEffect(() => {
-		console.log(colorScheme);
-	}, []);
+	// useEffect(() => {
+	// 	console.log(Appearance.getColorScheme());
+	// }, []);
 
-	const isOptionSet = (option: string) => option === colorScheme;
+	const setTheme = (option: string) => {
+		Appearance.setColorScheme(option !== 'system' ? (option as ColorSchemeName) : null);
+	};
+
+	const isOptionSet = (option: string) => {
+		return colorScheme === option;
+	};
 	const getThemeIcon = (option: string) => {
 		switch (option) {
 			case 'light':
-				return <LightThemeIcon />;
+				return <LightThemeIcon color={isOptionSet(option) ? colorPrimary : ''} />;
 			case 'dark':
-				return <DarkThemeIcon />;
+				return <DarkThemeIcon color={isOptionSet(option) ? colorPrimary : ''} />;
 			case 'system':
-				return <AppearanceIcon width={20} height={20} />;
+				return <AppearanceIcon width={20} height={20} color={isOptionSet(option) ? colorPrimary : ''} />;
 			default:
 				return null;
 		}
@@ -36,10 +41,7 @@ export function AppearanceSwitch() {
 			{schemeOptions.map((option) => (
 				<View className='pl-5' key={option}>
 					<View className='flex flex-row items-center justify-between pb-3'>
-						<Pressable
-							className='flex flex-row items-center'
-							onPress={() => Appearance.setColorScheme(option !== 'system' ? (option as ColorSchemeName) : null)}
-						>
+						<Pressable className='flex flex-row items-center' onPress={() => setTheme(option)}>
 							{getThemeIcon(option)}
 							<ThemedText style={isOptionSet(option) ? styles.primary : {}} className='ml-3 text-lg'>
 								{t(`appearance.${option}`)}
