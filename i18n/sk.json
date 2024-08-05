@@ -8,7 +8,7 @@
 	"home": {
 		"hello": "Vitaj späť",
 		"wordsTitle": "Slovíčka na dnes",
-		"empty": "Žiadne slovíčka na dnes 🤫"
+		"empty": "Zatiaľ nebolo pridané žiadne slovíčko 🤫"
 	},
 	"appearance": {
 		"dark": "Tmavá",
@@ -38,6 +38,17 @@
 		"signUp": "Registrovať",
 		"error": "Nesprávne prihlasovacie údaje!"
 	},
+	"register": {
+		"title": "Registrovať sa",
+		"subtitle": "Zadajte svoje registračné údaje",
+		"repeatPassword": "Zopakujte heslo",
+		"passwordRepeatPlaceholder": "Zopakujte heslo",
+		"passwordMatch": "Heslá sa nezhodujú",
+		"button": "Registrovať",
+		"haveAccount": "Už máte účet? ",
+		"login": "Prihlásiť sa",
+		"error": "Nesprávne registračné údaje!"
+	},
 	"profile": {
 		"title": "Profil",
 		"guest": "Hosť",
@@ -49,6 +60,9 @@
 		"deleteAccount": "Zmazať účet",
 		"accountInformationTitle": "Informácie o účte",
 		"dangerZoneTitle": "Nebezpečná zóna",
-		"appDescription": "Jednoduchá aplikácia pre správu hesiel"
+		"appDescription": "Jednoduchá aplikácia pre správu hesiel",
+		"reset": "Resetovať heslo",
+		"resetSend": "Email pre resetovanie hesla bol odoslaný",
+		"resetError": "Nastala chyba pri odosielaní emailu pre resetovanie hesla"
 	}
 }

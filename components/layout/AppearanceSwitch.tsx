@@ -8,22 +8,40 @@ import { AppearanceIcon } from '../Icons/AppearanceIcon';
 import CheckmarkIcon from '../Icons/CheckmarkIcon';
 import DarkThemeIcon from '../Icons/DarkThemeIcon';
 import LightThemeIcon from '../Icons/LightThemeIcon';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect, useState } from 'react';
 
 export function AppearanceSwitch() {
 	const colorScheme = useColorScheme();
+	const [theme, setTheme] = useState('');
 
 	const schemeOptions = ['light', 'dark', 'system'];
-	// useEffect(() => {
-	// 	console.log(Appearance.getColorScheme());
-	// }, []);
 
-	const setTheme = (option: string) => {
+	const onChangeTheme = (option: string) => {
+		AsyncStorage.setItem('theme', option);
+		setTheme(option);
 		Appearance.setColorScheme(option !== 'system' ? (option as ColorSchemeName) : null);
 	};
 
-	const isOptionSet = (option: string) => {
-		return colorScheme === option;
+	const getTheme = async () => {
+		const stored = await AsyncStorage.getItem('theme');
+
+		if (stored) {
+			setTheme(stored);
+			Appearance.setColorScheme(stored !== 'system' ? (stored as ColorSchemeName) : null);
+		} else {
+			setTheme(colorScheme ?? 'light');
+			AsyncStorage.setItem('theme', theme);
+		}
 	};
+	useEffect(() => {
+		getTheme();
+	}, []);
+
+	const isOptionSet = (option: string) => {
+		return theme === option;
+	};
+
 	const getThemeIcon = (option: string) => {
 		switch (option) {
 			case 'light':
@@ -40,15 +58,15 @@ export function AppearanceSwitch() {
 		<View className='flex gap-3'>
 			{schemeOptions.map((option) => (
 				<View className='pl-5' key={option}>
-					<View className='flex flex-row items-center justify-between pb-3'>
-						<Pressable className='flex flex-row items-center' onPress={() => setTheme(option)}>
+					<Pressable className='flex flex-row items-center justify-between pb-3' onPress={() => onChangeTheme(option)}>
+						<View className='flex flex-row items-center'>
 							{getThemeIcon(option)}
 							<ThemedText style={isOptionSet(option) ? styles.primary : {}} className='ml-3 text-lg'>
 								{t(`appearance.${option}`)}
 							</ThemedText>
-						</Pressable>
-						{isOptionSet(option) ? <CheckmarkIcon width={30} height={30} /> : null}
-					</View>
+						</View>
+						{isOptionSet(option) ? <CheckmarkIcon width={20} height={20} /> : null}
+					</Pressable>
 					<Divider />
 				</View>
 			))}

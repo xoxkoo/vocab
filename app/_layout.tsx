@@ -1,17 +1,18 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import { router, Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
-import { Appearance, StyleSheet } from 'react-native';
+import { Appearance, Pressable, StyleSheet } from 'react-native';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 import useAuth from '@/firebase/useAuth';
-import { colorSecondary } from '@/constants/Colors';
+import { Colors, colorSecondary } from '@/constants/Colors';
 import { borderRadius } from '@/assets/styles';
 import { ToastProvider } from 'react-native-toast-notifications';
 import { NativeWindStyleSheet } from 'nativewind';
+import { ArrowLeftIcon } from '@/components/Icons/ArrowLeftIcon';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -43,38 +44,33 @@ export default function RootLayout() {
 	return (
 		<ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
 			<ToastProvider placement='top'>
-				<Stack>
+				<Stack screenOptions={{ headerShown: false }}>
+					<Stack.Screen name='(tabs)' />
+					<Stack.Screen name='login' />
 					<Stack.Screen
-						name='(tabs)'
-						options={{
-							headerShown: false,
-						}}
-					/>
-					<Stack.Screen
-						name='login'
+						name='register'
 						options={{
 							headerShown: false,
 							// headerTitle: '',
+							// headerShown: true,
 							// headerShadowVisible: false,
-							// headerLeft: () => '',
 							// headerStyle: {
 							// 	backgroundColor: Colors[colorScheme ?? 'light'].background,
 							// },
+							// headerLeft: () =>
+							// 	router.canGoBack() ? (
+							// 		<Pressable
+							// 			className='pl-3'
+							// 			onPress={() => {
+							// 				if (router.canGoBack()) router.back();
+							// 			}}
+							// 		>
+							// 			<ArrowLeftIcon />
+							// 		</Pressable>
+							// 	) : null,
 						}}
 					/>
-					<Stack.Screen
-						name='index'
-						options={{
-							headerShown: false,
-							// headerTitle: '',
-							// headerShadowVisible: false,
-							// headerLeft: () => '',
-							// headerStyle: {
-							// 	backgroundColor: Colors[colorScheme ?? 'light'].background,
-							// },
-						}}
-					/>
-
+					<Stack.Screen name='index' />
 					<Stack.Screen name='+not-found' />
 				</Stack>
 			</ToastProvider>

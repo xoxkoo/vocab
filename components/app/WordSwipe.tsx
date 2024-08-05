@@ -34,6 +34,18 @@ const WordSwipe: React.FC<WordSwipeProps> = ({ words }) => {
 					// prevButton={<ArrowLeftIcon />}
 					// buttonWrapperStyle={{ top: '50%', position: 'absolute', paddingBottom: 15 }}
 					renderPagination={renderPagination}
+					style={{ position: 'absolute', top: 0 }}
+					// style={{ marginTop: '-20%' }}
+					// className='bg-red-500'
+					containerStyle={{
+						height: 'auto',
+						// backgroundColor: 'black',
+						// top: 0,
+						// left: 0,
+						// position: 'absolute',
+						// height: '100%',
+						// width: '100%',
+					}}
 				>
 					{words.map((data, index) => (
 						<WordDisplay data={data} key={index} />

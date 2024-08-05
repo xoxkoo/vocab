@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import {
 	GoogleAuthProvider,
 	onAuthStateChanged,
-	signInWithPopup,
 	signOut,
 	User,
 	Unsubscribe,
@@ -11,8 +10,10 @@ import {
 	FacebookAuthProvider,
 	OAuthProvider,
 	signInWithRedirect,
+	deleteUser,
+	createUserWithEmailAndPassword,
+	sendPasswordResetEmail,
 } from 'firebase/auth';
-// import { GoogleSignin, isErrorWithCode, statusCodes } from '@react-native-google-signin/google-signin';
 import { auth } from './config';
 import { router } from 'expo-router';
 
@@ -122,6 +123,37 @@ const useAuth = () => {
 		});
 	};
 
+	const deleteAccount = async (): Promise<void> => {
+		if (!user) return;
+
+		deleteUser(user)
+			.then(() => {
+				setUser(null);
+				router.replace('/login');
+			})
+			.catch((error) => {
+				throw error;
+			});
+	};
+
+	const sendPasswordResetLink = async (): Promise<void> => {
+		try {
+			if (!user?.email) return;
+			await sendPasswordResetEmail(auth, user?.email);
+		} catch (error) {
+			throw error;
+		}
+	};
+
+	const createAccount = async (email: string, password: string): Promise<void> => {
+		try {
+			const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+			setUser(userCredential.user);
+			router.replace(afterLoginPage);
+		} catch (error) {
+			throw error;
+		}
+	};
 	const signIn = async (provider: GoogleAuthProvider | FacebookAuthProvider | OAuthProvider) => {
 		if (user) return;
 
@@ -146,9 +178,12 @@ const useAuth = () => {
 		user,
 		error,
 		loginWithGoogle,
+		deleteAccount,
 		loginWithEmail,
 		loginWithApple,
 		loginWithFacebook,
+		createAccount,
+		sendPasswordResetLink,
 		logout,
 		getCurrentUser,
 		isLogged,

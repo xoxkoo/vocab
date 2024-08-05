@@ -8,7 +8,7 @@ import '../../i18n';
 import useAuth from '@/firebase/useAuth';
 import { useEffect, useState } from 'react';
 import WordSwipe from '@/components/app/WordSwipe';
-import SuggestionModal from '@/components/app/SugestionModal';
+import SuggestionModal from '@/components/app/SuggestionModal';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 

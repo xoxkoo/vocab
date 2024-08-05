@@ -1,7 +1,7 @@
-import { Pressable, TextInput, View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { ThemedText } from '../theme/ThemedText';
 import { useTranslation } from 'react-i18next';
-import { BottomSheetModal, BottomSheetView } from '@gorhom/bottom-sheet';
+import { BottomSheetModal, BottomSheetTextInput, BottomSheetView } from '@gorhom/bottom-sheet';
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import AppButton from '../base/AppButton';
@@ -21,11 +21,11 @@ export default function SuggestionModal() {
 
 	const postSuggestion = async (input: string) => {
 		if (input.trim()) {
+			bottomSheetModalRef.current?.dismiss();
 			try {
 				await suggestion.postSuggestion(input);
 
 				setInput('');
-				bottomSheetModalRef.current?.dismiss();
 				toast.show(t('suggestion.success'), { type: 'success' });
 			} catch (error) {
 				toast.show(t('suggestion.error'), { type: 'error' });
@@ -33,7 +33,7 @@ export default function SuggestionModal() {
 		}
 	};
 
-	const snapPoints = useMemo(() => ['25%', '50%'], []);
+	const snapPoints = useMemo(() => ['30%', '35%'], []);
 	const handlePresentModalPress = useCallback(() => {
 		bottomSheetModalRef.current?.present();
 	}, []);
@@ -46,23 +46,30 @@ export default function SuggestionModal() {
 					<ThemedText className='underline'>{t('suggestion.leaveUsSuggestion2')}</ThemedText>
 				</View>
 			</Pressable>
+
 			<BottomSheetModal
 				ref={bottomSheetModalRef}
 				index={1}
 				snapPoints={snapPoints}
-				backgroundStyle={{ backgroundColor: Colors[colorScheme ?? 'light'].shade }}
+				backgroundStyle={{
+					backgroundColor: Colors[colorScheme ?? 'light'].shade,
+					borderColor: Colors[colorScheme ?? 'light'].background,
+					borderWidth: 1,
+					borderTopWidth: 4,
+				}}
 				handleIndicatorStyle={{ backgroundColor: Colors[colorScheme ?? 'light'].text }}
 			>
 				<BottomSheetView style={{ ...styles.contentContainer }}>
 					<ThemedText>{t('suggestion.title')} 🤝</ThemedText>
-					<TextInput
+					<BottomSheetTextInput
 						value={input}
 						onChangeText={setInput}
 						placeholder={t('suggestion.placeholder')}
 						placeholderTextColor={colorSecondary}
 						autoCapitalize='none'
+						onSubmitEditing={() => postSuggestion(input)}
+						returnKeyType='done'
 						style={{ ...styles.input, color: Colors[colorScheme ?? 'light'].text }}
-						className='p-3'
 					/>
 					<AppButton
 						title={t('suggestion.button')}
@@ -85,6 +92,7 @@ const styles = StyleSheet.create({
 		borderColor: colorSecondary,
 		marginBottom: 15,
 		marginTop: 20,
+		padding: 10,
 		width: '100%',
 		fontFamily: 'DMSans-Regular',
 	},
