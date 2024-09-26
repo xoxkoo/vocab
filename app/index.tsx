@@ -1,5 +1,4 @@
-import { View } from 'react-native';
-import { HelloWave } from '@/components/app/HelloWave';
+import { View, Image } from 'react-native';
 import { ThemedText } from '@/components/theme/ThemedText';
 import { ThemedView } from '@/components/theme/ThemedView';
 import { useTranslation } from 'react-i18next';
@@ -40,7 +39,12 @@ export default function HomeScreen() {
 						{t('welcome.title')}
 					</ThemedText>
 					<ThemedText className='mx-auto'>{t('welcome.subtitle')}</ThemedText>
+
 					<View className='mt-auto'>
+						<Image
+							source={require('@/assets/images/welcome.png')}
+							style={{ width: 300, height: 400, marginLeft: 'auto', marginRight: 'auto' }}
+						/>
 						<ThemedText className='mx-auto mb-5'>{t('welcome.description')}</ThemedText>
 						<AppButton
 							title={t('welcome.button')}
