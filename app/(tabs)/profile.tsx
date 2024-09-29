@@ -42,7 +42,7 @@ export default function Profile() {
 		<ParallaxScrollView
 			headerImage={
 				<SafeAreaView style={styles.headerImageContainer}>
-					<Image source={require('@/assets/images/profile/sk.png')} style={styles.headerImage} />
+					<Image source={require('@/assets/images/profile/background.png')} style={styles.headerImage} />
 				</SafeAreaView>
 			}
 			headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}

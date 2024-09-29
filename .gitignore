@@ -9,6 +9,9 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+vocab-play-store-conf.json
+android/
+ios/
 
 # macOS
 .DS_Store
