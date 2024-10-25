@@ -70,7 +70,7 @@ const AppButton: React.FC<AppButtonProps> = ({
 
 const styles = StyleSheet.create({
 	button: {
-		paddingVertical: 12,
+		paddingVertical: 14,
 		paddingHorizontal: 20,
 		borderRadius: borderRadius,
 		alignItems: 'center',
@@ -79,6 +79,10 @@ const styles = StyleSheet.create({
 	},
 	primaryButton: {
 		backgroundColor: colorPrimary,
+		shadowColor: '#163856',
+		shadowOpacity: 1,
+		shadowOffset: { width: 0, height: 0 },
+		shadowRadius: 2,
 	},
 	dangerButton: {
 		backgroundColor: colorDanger,

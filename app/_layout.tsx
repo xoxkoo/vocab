@@ -44,7 +44,7 @@ export default function RootLayout() {
 	return (
 		<ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
 			<ToastProvider placement='top'>
-				<Stack screenOptions={{ headerShown: false }}>
+				<Stack screenOptions={{ headerShown: false, animationTypeForReplace: 'push', animation: 'slide_from_right' }}>
 					<Stack.Screen name='(tabs)' />
 					<Stack.Screen name='login' />
 					<Stack.Screen

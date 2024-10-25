@@ -63,6 +63,8 @@
 		"appDescription": "Jednoduchá aplikácia pre správu hesiel",
 		"reset": "Resetovať heslo",
 		"resetSend": "Email pre resetovanie hesla bol odoslaný",
-		"resetError": "Nastala chyba pri odosielaní emailu pre resetovanie hesla"
+		"resetError": "Nastala chyba pri odosielaní emailu pre resetovanie hesla",
+		"legal": "Právne informácie",
+		"donateMe": "Podporte nás"
 	}
 }

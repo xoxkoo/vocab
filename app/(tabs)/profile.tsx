@@ -15,6 +15,8 @@ import { AppearanceSwitch } from '@/components/layout/AppearanceSwitch';
 import { DangerIcon } from '@/components/Icons/DangerIcon';
 import { useToast } from 'react-native-toast-notifications';
 import { ProfileIcon } from '@/components/Icons/ProfileIcon';
+import { DonateMe } from '@/components/app/DonateMe';
+import { LegalDocs } from '@/components/app/LegalDocs';
 
 export default function Profile() {
 	const { sendPasswordResetLink, user, isLogged, deleteAccount, logout } = useAuth();
@@ -60,6 +62,8 @@ export default function Profile() {
 							<Collapsible title={t('profile.appearance')} icon={<AppearanceIcon width={30} height={30} />}>
 								<AppearanceSwitch />
 							</Collapsible>
+							<DonateMe />
+							<LegalDocs />
 							<Collapsible
 								title={t('profile.dangerZoneTitle')}
 								icon={<DangerIcon />}
@@ -75,6 +79,9 @@ export default function Profile() {
 							<Collapsible title={t('profile.appearance')} icon={<AppearanceIcon width={30} height={30} />}>
 								<AppearanceSwitch />
 							</Collapsible>
+							<LegalDocs />
+							<DonateMe />
+
 							<AppButton
 								title={t('login.title')}
 								outlined
