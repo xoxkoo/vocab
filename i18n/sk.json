@@ -1,7 +1,8 @@
 {
 	"welcome": {
-		"title": "vocab.",
-		"subtitle": "Rozšír svoju slovnú zásobu",
+		"title": "lexikón.",
+		"subtitle": "lexikón -u/-a m.",
+		"subSubTitle": "slovník, obyč. náučný: technický l.; spoločenský l.",
 		"description": "Nauč sa nové slovo každý deň a rozširuj svoju slovnú zásobu – táto aplikácia je praktický nástroj na zlepšenie jazykových schopností a obohatenie tvojej komunikácie.",
 		"button": "Zlepši si slovník"
 	},
@@ -65,6 +66,7 @@
 		"resetSend": "Email pre resetovanie hesla bol odoslaný",
 		"resetError": "Nastala chyba pri odosielaní emailu pre resetovanie hesla",
 		"legal": "Právne informácie",
+		"privacy": "Ochrana osobných údajov",
 		"donateMe": "Podporte nás"
 	}
 }

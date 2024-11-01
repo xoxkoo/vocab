@@ -15,7 +15,6 @@
 		"preset": "jest-expo"
 	},
 	"dependencies": {
-		"@gorhom/bottom-sheet": "^4.6.3",
 		"@react-native-async-storage/async-storage": "1.23.1",
 		"@react-native-community/cli-platform-android": "^14.1.1",
 		"@react-native-google-signin/google-signin": "^12.2.1",

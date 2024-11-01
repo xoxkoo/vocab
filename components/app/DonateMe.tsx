@@ -18,7 +18,7 @@ export const DonateMe: React.FC = () => {
 					<View style={styles.icon}>
 						<DonateMeIcon />
 					</View>
-					<ThemedText type='subtitle' className='pl-3'>
+					<ThemedText type='subtitle' className='pl-5'>
 						{t('profile.donateMe')}
 					</ThemedText>
 				</View>

@@ -38,7 +38,8 @@ export default function HomeScreen() {
 					<ThemedText type='title' className='mx-auto'>
 						{t('welcome.title')}
 					</ThemedText>
-					<ThemedText className='mx-auto'>{t('welcome.subtitle')}</ThemedText>
+					<ThemedText className='mx-auto mt-3'>{t('welcome.subtitle')}</ThemedText>
+					<ThemedText className='mx-auto'>{t('welcome.subSubTitle')}</ThemedText>
 
 					<View className='mt-auto'>
 						<Image
