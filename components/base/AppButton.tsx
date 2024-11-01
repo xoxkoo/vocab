@@ -79,10 +79,10 @@ const styles = StyleSheet.create({
 	},
 	primaryButton: {
 		backgroundColor: colorPrimary,
-		shadowColor: '#163856',
-		shadowOpacity: 1,
-		shadowOffset: { width: 0, height: 0 },
-		shadowRadius: 2,
+		// shadowColor: '#163856',
+		// shadowOpacity: 1,
+		// shadowOffset: { width: 0, height: 0 },
+		// shadowRadius: 2,
 	},
 	dangerButton: {
 		backgroundColor: colorDanger,

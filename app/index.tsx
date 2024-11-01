@@ -1,4 +1,4 @@
-import { View, Image } from 'react-native';
+import { View, Image, Platform } from 'react-native';
 import { ThemedText } from '@/components/theme/ThemedText';
 import { ThemedView } from '@/components/theme/ThemedView';
 import { useTranslation } from 'react-i18next';
@@ -31,10 +31,14 @@ export default function HomeScreen() {
 		<>
 			<SafeAreaView
 				edges={['top', 'bottom']}
-				style={{ flex: 0, backgroundColor: Colors[colorScheme ?? 'light'].background }}
+				style={{
+					flex: 0,
+					backgroundColor: Colors[colorScheme ?? 'light'].background,
+					paddingTop: Platform.OS === 'android' ? 25 : 0,
+				}}
 			/>
 			<SafeAreaView edges={['left', 'right']} className='flex-1'>
-				<ThemedView className='flex-1 p-5 pb-20'>
+				<ThemedView className='flex-12 p-5 pb-20'>
 					<ThemedText type='title' className='mx-auto'>
 						{t('welcome.title')}
 					</ThemedText>
