@@ -58,6 +58,7 @@ export default function SuggestionModal() {
 					borderTopWidth: 4,
 				}}
 				handleIndicatorStyle={{ backgroundColor: Colors[colorScheme ?? 'light'].text }}
+				android_keyboardInputMode='adjustResize'
 			>
 				<BottomSheetView style={{ ...styles.contentContainer }}>
 					<ThemedText>{t('suggestion.title')} 🤝</ThemedText>
